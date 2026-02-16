@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../utils/api";
+import { BACKEND_URL } from "../utils/config";
 
 const Profile = () => {
   const [form, setForm] = useState({
@@ -20,7 +21,7 @@ const Profile = () => {
         setForm((prev) => ({ ...prev, ...res.data }));
 
         if (res.data.profileImage) {
-          setPreview(`http://localhost:5000${res.data.profileImage}`);
+          setPreview(`${BACKEND_URL}${res.data.profileImage}`);
         }
       } catch (err) {
         console.error(
@@ -59,7 +60,7 @@ const Profile = () => {
       const updated = res.data;
       setForm((prev) => ({ ...prev, ...updated }));
       if (updated.profileImage) {
-        setPreview(`http://localhost:5000${updated.profileImage}?t=${Date.now()}`);
+        setPreview(`${BACKEND_URL}${updated.profileImage}?t=${Date.now()}`);
       }
 
       const storedUser = localStorage.getItem("user");

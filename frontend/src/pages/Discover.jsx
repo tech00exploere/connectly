@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../utils/api";
+import { BACKEND_URL } from "../utils/config";
 
 const Discover = () => {
   const [users, setUsers] = useState([]);
@@ -105,7 +106,7 @@ const Discover = () => {
       {users.map((u) => (
         <div key={u._id} className="bg-white dark:bg-gray-800 p-4 rounded shadow flex flex-col items-center text-gray-800 dark:text-gray-100">
           <img
-            src={u.profileImage ? `http://localhost:5000${u.profileImage}` : "/avatar.png"}
+            src={u.profileImage ? `${BACKEND_URL}${u.profileImage}` : "/avatar.png"}
             alt={u.username}
             className="w-16 h-16 rounded-full mb-2"
           />

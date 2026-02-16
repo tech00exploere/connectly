@@ -1,16 +1,18 @@
+import { BACKEND_URL } from "../utils/config";
+
 const FeedPost = ({ post }) => {
   const author = post?.author;
   const mediaSrc = post?.mediaUrl
     ? post.mediaUrl.startsWith("http")
       ? post.mediaUrl
-      : `http://localhost:5000${post.mediaUrl}`
+      : `${BACKEND_URL}${post.mediaUrl}`
     : "";
 
   return (
     <article className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-5 shadow-sm">
       <div className="flex items-center gap-3">
         <img
-          src={author?.image ? `http://localhost:5000${author.image}` : "/avatar.png"}
+          src={author?.image ? `${BACKEND_URL}${author.image}` : "/avatar.png"}
           alt={author?.username || "User"}
           className="w-10 h-10 rounded-full object-cover"
         />

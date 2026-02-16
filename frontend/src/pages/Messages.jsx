@@ -2,13 +2,9 @@ import { useEffect, useState, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import api from "../utils/api";
 import { useAuth } from "../context/AuthContext";
-import { io } from "socket.io-client";
+import { connectSocket } from "../utils/socket";
 
-const socket = io("http://localhost:5000", {
-  auth: {
-    token: localStorage.getItem("token")
-  }
-});
+const socket = connectSocket(localStorage.getItem("token"));
 
 const Messages = () => {
   const { user } = useAuth();

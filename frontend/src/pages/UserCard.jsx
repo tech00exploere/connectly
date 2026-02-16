@@ -1,16 +1,8 @@
-import axios from "axios";
+import api from "../utils/api";
 
 const ConnectButton = ({ userId }) => {
-  const token = localStorage.getItem("token");
-
   const sendRequest = async () => {
-    await axios.post(
-      `http://localhost:5000/api/connections/send/${userId}`,
-      {},
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
+    await api.post(`/users/connect/${userId}`, {});
 
     alert("Connection request sent");
   };

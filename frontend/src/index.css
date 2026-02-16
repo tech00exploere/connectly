@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "tailwindcss";
 
 :root {
   --primary-100: #d1fae5;

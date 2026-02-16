@@ -1,6 +1,7 @@
 import { useState } from "react";
 import api from "../utils/api";
 import { useAuth } from "../context/AuthContext";
+import { BACKEND_URL } from "../utils/config";
 
 const PostCard = ({ post, onUpdated, onDeleted }) => {
   const { user } = useAuth();
@@ -8,7 +9,7 @@ const PostCard = ({ post, onUpdated, onDeleted }) => {
   const mediaSrc = post?.mediaUrl
     ? post.mediaUrl.startsWith("http")
       ? post.mediaUrl
-      : `http://localhost:5000${post.mediaUrl}`
+      : `${BACKEND_URL}${post.mediaUrl}`
     : "";
   const [likesCount, setLikesCount] = useState(post?.likes?.length || 0);
   const [liked, setLiked] = useState(false);

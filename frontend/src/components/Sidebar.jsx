@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Compass, MessageCircle, Users, Settings, PlusCircle } from "lucide-react";
 import api from "../utils/api";
+import { BACKEND_URL } from "../utils/config";
 
 const Sidebar = () => {
   const [connections, setConnections] = useState([]);
@@ -59,7 +60,7 @@ const Sidebar = () => {
                 className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-[var(--primary-700)] dark:hover:text-[var(--primary-200)]"
               >
                 <img
-                  src={u.profileImage ? `http://localhost:5000${u.profileImage}` : "/avatar.png"}
+                  src={u.profileImage ? `${BACKEND_URL}${u.profileImage}` : "/avatar.png"}
                   alt={u.username}
                   className="w-6 h-6 rounded-full"
                 />
